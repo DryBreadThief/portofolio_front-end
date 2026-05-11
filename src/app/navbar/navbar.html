@@ -1,11 +1,56 @@
-<nav class="border-b-2 border-gray-300 py-4">
-    <div>
+<nav class="relative bg-background text-text-main dark:bg-dark-background dark:text-dark-text-main">
+  <div class="mx-auto flex max-w-screen-xl items-center justify-between p-4">
 
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+    <a routerLink="/" class="text-xl font-bold text-primary dark:text-dark-primary">
+      MyPortfolio
+    </a>
 
+    <button
+      data-collapse-toggle="navbar-dropdown"
+      type="button"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-lg hover:bg-surface dark:hover:bg-dark-surface md:hidden"
+      aria-controls="navbar-dropdown"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+
+      <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+      </svg>
+    </button>
+
+    <div
+      id="navbar-dropdown"
+      class="absolute right-4 top-16 hidden w-48 rounded-lg bg-surface p-4 shadow-lg dark:bg-dark-surface md:static md:block md:w-auto md:bg-transparent md:p-0 md:shadow-none md:dark:bg-transparent"
+    >
+      <ul class="flex flex-col gap-3 font-medium md:flex-row md:gap-8">
+
+        <li>
+          <a routerLink="/" class="cursor-pointer block rounded px-3 py-2 text-primary dark:text-dark-primary">
+            Home
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/projects" class="cursor-pointer block rounded px-3 py-2 hover:text-primary dark:hover:text-dark-primary">
+            Projects
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/homelab" class="cursor-pointer block rounded px-3 py-2 hover:text-primary dark:hover:text-dark-primary">
+            Homelab
+          </a>
+        </li>
+
+        <li>
+          <a routerLink="/contact" class="cursor-pointer block rounded px-3 py-2 hover:text-primary dark:hover:text-dark-primary">
+            Contact
+          </a>
+        </li>
+
+      </ul>
     </div>
 
+  </div>
 </nav>
