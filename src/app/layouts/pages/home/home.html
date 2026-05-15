@@ -1,0 +1,69 @@
+<section class="px-6 py-20">
+  <div class="mx-auto max-w-screen-xl">
+
+    <!-- Intro -->
+    <div class="max-w-3xl">
+      <h1 class="text-4xl font-bold text-primary dark:text-dark-primary md:text-5xl">
+        Hi, I am Theodoros Niarchos
+      </h1>
+
+      <p class="mt-6 text-lg text-text-muted dark:text-dark-text-muted">
+        I am building this portfolio to document my projects, homelab experiments,
+        and learning journey in frontend, backend, databases, networking, and self-hosting.
+      </p>
+
+      <div class="mt-8 flex gap-4">
+
+
+        <a
+          href="#experience"
+          class="rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
+        >
+          Experience
+        </a>
+
+        <a
+          href="#projects"
+          class="rounded-lg border border-primary px-5 py-2 text-primary hover:bg-surface dark:border-dark-primary dark:text-dark-primary dark:hover:bg-dark-surface"
+        >
+          Projects
+        </a>
+
+        <a
+          href="#homelab"
+          class="rounded-lg border border-primary px-5 py-2 text-primary hover:bg-surface dark:border-dark-primary dark:text-dark-primary dark:hover:bg-dark-surface"
+        >
+          Homelab
+        </a>
+
+        <a
+          href="#certs"
+          class="rounded-lg border border-primary px-5 py-2 text-primary hover:bg-surface dark:border-dark-primary dark:text-dark-primary dark:hover:bg-dark-surface"
+        >
+          Certifications
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Experience section -->
+    <section id="experience" class="mt-24">
+      <app-exp/>
+    </section>
+
+    <!-- Projects section -->
+    <section id="projects" class="mt-24">
+      <app-projects/>
+    </section>
+
+    <!-- Homelab section -->
+    <section id="homelab" class="mt-24">
+      <app-homelab/>
+    </section>
+
+    <section id="certs" class="mt-24">
+      <app-certs/>
+    </section>
+
+  </div>
+</section>
