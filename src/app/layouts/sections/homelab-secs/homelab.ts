@@ -7,8 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './homelab.scss',
 })
 export class Homelab {
-  showAllHomelab = false;
-
   homelabItems = [
     {
       title: 'Servers',
@@ -29,6 +27,6 @@ export class Homelab {
   ];
 
   get visibleHomelabItems() {
-    return this.showAllHomelab ? this.homelabItems : this.homelabItems.slice(0, 3);
+    return this.homelabItems.slice(0, 3);
   }
 }

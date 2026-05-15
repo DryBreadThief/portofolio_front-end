@@ -6,31 +6,30 @@ import { Component } from '@angular/core';
   templateUrl: './certs.html',
   styleUrl: './certs.scss',
 })
+
 export class Certs {
-  showAllCerts = false;
   certImage = 'images/c.webp';
-  
 
   certs = [
     {
       title: 'CompTIA A+',
-      description: 'Currently studying hardware, networking, troubleshooting, operating systems, and security basics.'
+      description: 'Hardware, networking, operating systems, and troubleshooting.'
     },
     {
       title: 'Angular',
-      description: 'Learning Angular by building this portfolio website.'
+      description: 'Frontend development, components, routing, and UI structure.'
     },
     {
       title: 'Networking',
-      description: 'Learning routing, switching, firewalls, VLANs, and homelab networking.'
+      description: 'Routing, switching, VLANs, firewalls, and network basics.'
     },
     {
       title: 'Linux',
-      description: 'Practicing Linux basics, servers, terminal usage, and system administration.'
+      description: 'Terminal usage, servers, filesystems, and administration.'
     }
   ];
 
   get visibleCerts() {
-    return this.showAllCerts ? this.certs : this.certs.slice(0, 3);
+    return this.certs.slice(0, 3);
   }
 }

@@ -4,11 +4,11 @@
   </h2>
 
   <p class="mt-4 max-w-2xl text-text-muted dark:text-dark-text-muted">
-    A short overview of my work experience, technical practice, and learning path.
+    My work experience, technical practice, and learning path.
   </p>
 
-  <div class="mt-8 grid gap-6 md:grid-cols-1">
-    @for (experience of experiences; track experience.title) {
+  <div class="mt-8 grid gap-6 md:grid-cols-3">
+    @for (experience of visibleExperiences; track experience.title) {
       <div class="rounded-lg bg-surface p-6 dark:bg-dark-surface">
         <h3 class="font-bold text-primary dark:text-dark-primary">
           {{ experience.title }}
@@ -25,15 +25,12 @@
     }
   </div>
 
-  @if (  experiences.length > 3  ) {
-    <button
-      type="button"
-      class="mt-6 rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
-      (click)="showAllExperiences = !showAllExperiences"
+  @if (experiences.length > 3) {
+    <a
+      href="/experience"
+      class="mt-6 inline-block rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
     >
-      {{ showAllExperiences ? 'Show less' : 'Show more' }}
-    </button>
+      View all
+    </a>
   }
-
-
 </section>

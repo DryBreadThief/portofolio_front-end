@@ -6,28 +6,32 @@ import { Component } from '@angular/core';
   templateUrl: './exp.html',
   styleUrl: './exp.scss',
 })
-export class Exp {
-  showAllExperiences = false;
 
+export class Exp {
   experiences = [
     {
       title: 'IT / Helpdesk',
       period: 'Current / Recent',
-      description: 'Supporting users, troubleshooting technical issues, and learning enterprise IT workflows.'
+      description: 'Supporting users, troubleshooting issues, and learning enterprise IT workflows.'
     },
     {
       title: 'SOC / Monitoring Exposure',
       period: 'Learning / Practice',
-      description: 'Learning about QRadar, events, flows, alerts, monitoring, and infrastructure health.'
+      description: 'Learning QRadar, events, flows, alerts, and infrastructure monitoring.'
     },
     {
       title: 'Homelab Practice',
       period: 'Personal Experience',
-      description: 'Practicing servers, networking, virtualization, containers, and self-hosted services.'
+      description: 'Practicing servers, networking, virtualization, containers, and self-hosting.'
+    },
+    {
+      title: 'Frontend Practice',
+      period: 'Personal Projects',
+      description: 'Building layouts and components with Angular, Tailwind, and Flowbite.'
     }
   ];
 
   get visibleExperiences() {
-    return this.showAllExperiences ? this.experiences : this.experiences.slice(0, 3);
+    return this.experiences.slice(0, 3);
   }
 }

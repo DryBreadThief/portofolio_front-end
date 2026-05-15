@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 })
 
 export class Certs {
-  certImage = 'images/cert-placeholder.webp';
+  certImage = 'images/c.webp';
 
   certs = [
     {

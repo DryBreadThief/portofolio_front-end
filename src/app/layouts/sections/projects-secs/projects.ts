@@ -6,29 +6,28 @@ import { Component } from '@angular/core';
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
-export class Projects {
-  showAllProjects = false;
 
+export class Projects {
   projects = [
     {
       title: 'Portfolio Website',
-      description: 'My personal website built with Angular, Tailwind, and Flowbite.'
+      description: 'My personal portfolio built with Angular, Tailwind, and Flowbite.'
     },
     {
-      title: 'Web App Project',
-      description: 'A future full-stack project with frontend, backend, and database.'
+      title: 'Full-Stack Web App',
+      description: 'Frontend, backend, database, authentication, and deployment.'
     },
     {
       title: 'Deployment Project',
-      description: 'Testing deployment, hosting, and reverse proxy setup.'
+      description: 'Hosting, reverse proxy, HTTPS, and server deployment.'
     },
     {
-      title: 'API Project',
-      description: 'A backend REST API project.'
+      title: 'Database Project',
+      description: 'PostgreSQL, schema design, and data structure.'
     }
   ];
 
   get visibleProjects() {
-    return this.showAllProjects ? this.projects : this.projects.slice(0, 3);
+    return this.projects.slice(0, 3);
   }
 }

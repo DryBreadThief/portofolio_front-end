@@ -8,10 +8,9 @@
   </p>
 
   <div class="mt-8 grid gap-6 md:grid-cols-3">
-    @for (cert of certs; track cert.title) {
+    @for (cert of visibleCerts; track cert.title) {
       <div class="overflow-hidden rounded-xl border border-gray-200 bg-surface dark:border-slate-800 dark:bg-dark-surface">
-
-        <div class="relative h-76">
+        <div class="relative h-56">
           <img
             [src]="certImage"
             [alt]="cert.title"
@@ -28,8 +27,16 @@
             </p>
           </div>
         </div>
-
       </div>
     }
   </div>
+
+  @if (certs.length > 3) {
+    <a
+      href="/certs"
+      class="mt-6 inline-block rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
+    >
+      View all
+    </a>
+  }
 </section>

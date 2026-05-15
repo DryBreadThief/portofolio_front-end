@@ -4,8 +4,7 @@
   </h2>
 
   <p class="mt-4 max-w-2xl text-text-muted dark:text-dark-text-muted">
-    Here I will add the software projects I build, including frontend,
-    backend, database, and deployment work.
+    Software projects, experiments, and technical builds.
   </p>
 
   <div class="mt-8 grid gap-6 md:grid-cols-3">
@@ -23,12 +22,11 @@
   </div>
 
   @if (projects.length > 3) {
-    <button
-      type="button"
-      class="mt-6 rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
-      (click)="showAllProjects = !showAllProjects"
+    <a
+      href="/projects"
+      class="mt-6 inline-block rounded-lg bg-primary px-5 py-2 text-white hover:bg-secondary dark:bg-dark-primary dark:text-dark-background dark:hover:bg-dark-secondary"
     >
-      {{ showAllProjects ? 'Show less' : 'Show more' }}
-    </button>
+      View all
+    </a>
   }
 </section>
