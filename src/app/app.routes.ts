@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Home } from './layouts/pages/home/home';
+import { Home } from './home/home';
 import { Exp } from './layouts/pages/exp/exp';
 import { Projects } from './layouts/pages/projects/projects';
 import { Homelab } from './layouts/pages/homelab/homelab';
