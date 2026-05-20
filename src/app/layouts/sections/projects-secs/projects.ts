@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { PortfolioApi, Project } from '../../../services/portfolio-api';
 
 @Component({
   selector: 'app-projects',
@@ -8,25 +9,26 @@ import { RouterLink } from "@angular/router";
   styleUrl: './projects.scss',
 })
 
-export class Projects {
-  projects = [
-    {
-      title: 'Portfolio Website',
-      description: 'My personal portfolio built with Angular, Tailwind, and Flowbite.'
-    },
-    {
-      title: 'Full-Stack Web App',
-      description: 'Frontend, backend, database, authentication, and deployment.'
-    },
-    {
-      title: 'Deployment Project',
-      description: 'Hosting, reverse proxy, HTTPS, and server deployment.'
-    },
-    {
-      title: 'Database Project',
-      description: 'PostgreSQL, schema design, and data structure.'
-    }
-  ];
+export class Projects implements OnInit {
+  projects: Project[] = [];
+  loading = true;
+  error = '';
+
+  constructor(private portfolioApi: PortfolioApi) {}
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.portfolioApi.getTopProjects().subscribe({
+      next: (projects) => {
+        this.projects = projects;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Unable to load projects right now.';
+        this.loading = false;
+      }
+    });
+  }
 
   get visibleProjects() {
     return this.projects.slice(0, 3);

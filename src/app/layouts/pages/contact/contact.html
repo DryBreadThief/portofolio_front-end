@@ -10,47 +10,56 @@
 
     <div class="mt-10 max-w-xl rounded-xl bg-surface p-6 dark:bg-dark-surface">
       <div class="space-y-4">
+        @if (loading) {
+          <p class="text-sm text-text-muted dark:text-dark-text-muted">Loading contact details...</p>
+        } @else if (error) {
+          <p class="text-sm text-text-muted dark:text-dark-text-muted">{{ error }}</p>
+        }
 
-        <div>
-          <h2 class="font-bold text-text-main dark:text-dark-text-main">
-            Email
-          </h2>
+        @if (profile) {
+          <div>
+            <h2 class="font-bold text-text-main dark:text-dark-text-main">
+              Email
+            </h2>
 
-          <a
-            [href]="'mailto:' + email"
-            class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
-          >
-            {{ email }}
-          </a>
-        </div>
+            <a
+              [href]="'mailto:' + profile.email"
+              class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
+            >
+              {{ profile.email }}
+            </a>
+          </div>
 
-        <div>
-          <h2 class="font-bold text-text-main dark:text-dark-text-main">
-            GitHub
-          </h2>
+          <div>
+            <h2 class="font-bold text-text-main dark:text-dark-text-main">
+              GitHub
+            </h2>
 
-          <a
-            [href]="github"
-            target="_blank"
-            class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
-          >
-            View GitHub
-          </a>
-        </div>
+            <a
+              [href]="profile.githubUrl"
+              target="_blank"
+              rel="noopener"
+              class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
+            >
+              View GitHub
+            </a>
+          </div>
 
-        <div>
-          <h2 class="font-bold text-text-main dark:text-dark-text-main">
-            LinkedIn
-          </h2>
+          <div>
+            <h2 class="font-bold text-text-main dark:text-dark-text-main">
+              LinkedIn
+            </h2>
 
-          <a
-            [href]="linkedin"
-            target="_blank"
-            class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
-          >
-            View LinkedIn
-          </a>
-        </div>
+            <a
+              [href]="profile.linkedinUrl"
+              target="_blank"
+              rel="noopener"
+              class="text-primary hover:text-secondary dark:text-dark-primary dark:hover:text-dark-secondary"
+            >
+              View LinkedIn
+            </a>
+          </div>
+        }
 
       </div>
     </div>

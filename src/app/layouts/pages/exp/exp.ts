@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Experience, PortfolioApi } from '../../../services/portfolio-api';
 
 @Component({
   selector: 'app-exp',
@@ -7,22 +8,24 @@ import { Component } from '@angular/core';
   styleUrl: './exp.scss',
 })
 
-export class Exp {
-  experiences = [
-    {
-      title: 'IT / Helpdesk',
-      period: 'Current / Recent',
-      description: 'Supporting users, troubleshooting technical issues, and learning enterprise IT workflows.'
-    },
-    {
-      title: 'SOC / Monitoring Exposure',
-      period: 'Learning / Practice',
-      description: 'Learning about QRadar, events, flows, alerts, monitoring, and infrastructure health.'
-    },
-    {
-      title: 'Homelab Practice',
-      period: 'Personal Experience',
-      description: 'Practicing servers, networking, virtualization, containers, and self-hosted services.'
-    }
-  ];
+export class Exp implements OnInit {
+  experiences: Experience[] = [];
+  loading = true;
+  error = '';
+
+  constructor(private portfolioApi: PortfolioApi) {}
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.portfolioApi.getAllExperience().subscribe({
+      next: (experiences) => {
+        this.experiences = experiences;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Unable to load experience right now.';
+        this.loading = false;
+      }
+    });
+  }
 }

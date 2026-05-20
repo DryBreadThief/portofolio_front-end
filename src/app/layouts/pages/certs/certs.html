@@ -9,14 +9,22 @@
     </p>
 
     <div class="mt-8 grid gap-6 md:grid-cols-3">
+      @if (loading) {
+        <p class="text-sm text-text-muted dark:text-dark-text-muted">Loading certifications...</p>
+      } @else if (error) {
+        <p class="text-sm text-text-muted dark:text-dark-text-muted">{{ error }}</p>
+      }
+
       @for (cert of certs; track cert.title) {
         <div class="overflow-hidden rounded-xl border border-gray-200 bg-surface dark:border-slate-800 dark:bg-dark-surface">
-          <div class="relative h-56">
-            <img
-              [src]="certImage"
-              [alt]="cert.title"
-              class="h-full w-full object-cover"
-            />
+          <div class="relative h-56 bg-surface dark:bg-dark-surface">
+            @if (cert.imageUrl) {
+              <img
+                [src]="cert.imageUrl"
+                [alt]="cert.title"
+                class="h-full w-full object-cover"
+              />
+            }
 
             <div class="absolute bottom-0 left-0 flex h-1/3 w-full flex-col justify-center bg-black/60 px-4 text-white">
               <h2 class="font-bold">
@@ -24,8 +32,17 @@
               </h2>
 
               <p class="mt-1 text-sm text-gray-200">
-                {{ cert.description }}
+                {{ cert.issuer }}
+                @if (cert.issueDate) {
+                  <span>- {{ cert.issueDate }}</span>
+                }
               </p>
+
+              @if (cert.credentialUrl) {
+                <a [href]="cert.credentialUrl" target="_blank" rel="noopener" class="mt-1 text-sm text-white underline">
+                  Credential
+                </a>
+              }
             </div>
           </div>
         </div>

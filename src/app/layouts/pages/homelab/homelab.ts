@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Homelab as HomelabItem, PortfolioApi } from '../../../services/portfolio-api';
 
 @Component({
   selector: 'app-homelab',
@@ -7,27 +8,24 @@ import { Component } from '@angular/core';
   styleUrl: './homelab.scss',
 })
 
-export class Homelab {
-  homelabItems = [
-    {
-      title: 'Servers',
-      description: 'Machines, operating systems, and hardware choices for my homelab.'
-    },
-    {
-      title: 'Networking',
-      description: 'Routers, switches, VLANs, firewalls, and internal network design.'
-    },
-    {
-      title: 'Virtualization',
-      description: 'Experiments with Proxmox, virtual machines, containers, and resource management.'
-    },
-    {
-      title: 'Self-hosting',
-      description: 'Hosting services with containers, reverse proxy, HTTPS, and DNS.'
-    },
-    {
-      title: 'Security',
-      description: 'Basic hardening, firewall rules, access control, and safe remote access.'
-    }
-  ];
+export class Homelab implements OnInit {
+  homelabItems: HomelabItem[] = [];
+  loading = true;
+  error = '';
+
+  constructor(private portfolioApi: PortfolioApi) {}
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.portfolioApi.getAllHomelabs().subscribe({
+      next: (homelabItems) => {
+        this.homelabItems = homelabItems;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Unable to load homelab items right now.';
+        this.loading = false;
+      }
+    });
+  }
 }

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { Experience, PortfolioApi } from '../../../services/portfolio-api';
 
 @Component({
   selector: 'app-exp',
@@ -8,29 +9,26 @@ import { RouterLink } from "@angular/router";
   styleUrl: './exp.scss',
 })
 
-export class Exp {
-  experiences = [
-    {
-      title: 'IT / Helpdesk',
-      period: 'Current / Recent',
-      description: 'Supporting users, troubleshooting issues, and learning enterprise IT workflows.'
-    },
-    {
-      title: 'SOC / Monitoring Exposure',
-      period: 'Learning / Practice',
-      description: 'Learning QRadar, events, flows, alerts, and infrastructure monitoring.'
-    },
-    {
-      title: 'Homelab Practice',
-      period: 'Personal Experience',
-      description: 'Practicing servers, networking, virtualization, containers, and self-hosting.'
-    },
-    {
-      title: 'Frontend Practice',
-      period: 'Personal Projects',
-      description: 'Building layouts and components with Angular, Tailwind, and Flowbite.'
-    }
-  ];
+export class Exp implements OnInit {
+  experiences: Experience[] = [];
+  loading = true;
+  error = '';
+
+  constructor(private portfolioApi: PortfolioApi) {}
+
+  ngOnInit(): void {
+    this.loading = true;
+    this.portfolioApi.getTopExperience().subscribe({
+      next: (experiences) => {
+        this.experiences = experiences;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Unable to load experience right now.';
+        this.loading = false;
+      }
+    });
+  }
 
   get visibleExperiences() {
     return this.experiences.slice(0, 3);
